@@ -1,2 +1,23 @@
+<button
+  [disabled]="isDisabledAdding"
+  class="btn btn-primary"
+  (click)="addCar()"
+>
+  add car
+</button>
+
+<p>{{ carAddingStatus }}</p>
+
+<hr>
+
 <app-car></app-car>
 <app-car></app-car>
+
+<hr>
+
+<input
+  type="text"
+  class="form-control"
+  (input)="onInput($event)"
+>
+<p>{{ inputText }}</p>
