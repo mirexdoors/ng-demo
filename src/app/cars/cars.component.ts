@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-cars',
@@ -7,8 +7,22 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
   isDisabledAdding: boolean = true;
-  carAddingStatus: string = '';
-  inputText: string = '';
+  carName: string = '';
+  carYear: number = 2017;
+  isCarAdded: boolean = false;
+  cars: Array<{name: string, year: number}> = [
+    {
+      name: 'Ford',
+      year: 2011,
+    },
+    {
+      name: 'Audi',
+      year: 2021,
+    },
+    {
+      name: 'BMW',
+      year: 1998,
+    }];
 
   constructor() {
     setTimeout(() => {
@@ -16,12 +30,15 @@ export class CarsComponent {
     }, 1000);
   }
 
-  addCar():void {
-    this.carAddingStatus = "Car added!";
+  addCar(): void {
+    this.cars.push(
+      {
+        name: this.carName,
+        year: this.carYear
+      }
+    );
+    this.isCarAdded = true;
+    this.carName = '';
+    this.carYear = 2017;
   }
-
-  onInput(event: Event) {
-    this.inputText = (<HTMLInputElement>event.target).value;
-  }
-
 }

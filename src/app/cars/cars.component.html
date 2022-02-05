@@ -1,3 +1,17 @@
+<input
+  [(ngModel)]="carName"
+  type="text"
+  placeholder="car name"
+  class="form-control mb-4"
+/>
+
+<input
+  [(ngModel)]="carYear"
+  type="text"
+  placeholder="car year"
+  class="form-control mb-4"
+/>
+
 <button
   [disabled]="isDisabledAdding"
   class="btn btn-primary"
@@ -6,18 +20,15 @@
   add car
 </button>
 
-<p>{{ carAddingStatus }}</p>
+<p *ngIf="isCarAdded; else errorStatus">Car added!</p>
+<ng-template #errorStatus>
+  <p>Car not added!</p>
+</ng-template>
+
 
 <hr>
-
-<app-car></app-car>
-<app-car></app-car>
-
+<app-car
+  *ngFor="let car of cars"
+  [carItem]="car"
+></app-car>
 <hr>
-
-<input
-  type="text"
-  class="form-control"
-  (input)="onInput($event)"
->
-<p>{{ inputText }}</p>
